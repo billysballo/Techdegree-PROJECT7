@@ -1,5 +1,11 @@
 /* Main styles */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;}
+
 body{background-color: 	white}
 .myimage{width:  10px;}
 
@@ -36,7 +42,7 @@ li{list-style-type: 	none;}
 
 .navigation{
      grid-area: navigation;
-     background-color: 	red;
+     background-color: 	navy;
      display: flex;
 
 }
@@ -55,6 +61,7 @@ h1{
 	color: 	#fff;
 	padding-left: 	12px
 }
+.headline{display: none;}
 .firstpart{
 
 	font-weight: 800;}
@@ -77,16 +84,32 @@ font-weight: 100;
 	
 }
 
-.icon-bell {
+.alert-icon-bell {
    font-size: 1.5em;
    transform-origin: 50% 50%;
    transition: transform 0.3s ease-out;
    height: 1em;
-   width: 1em;
+   width: 30px;
    margin-right: 0px;
    margin-top: 6px;
 }
 
+
+.msg-dot {
+   font-size: 0.5em;
+   color: #7477bf;
+    transition: transform 0.3s ease-out;
+   background-color: #81c98f;
+   border-radius: 50%;
+   height: 8px;
+   width: 8px;
+   text-align: center;
+   margin-left: -10px;
+   margin-top: -10px;
+}
+.alert-icon-bell:hover {
+   transform: rotate(45deg) scale(2,2);
+}
 
 .myimage {
    height: 2em;
@@ -115,16 +138,16 @@ font-weight: 100;
 #members,
 #visits,
 #settings {
-   display: flex;
-   flex-direction: row;
-   height: 25px;
-   width: 100%;
-   min-width: 20px;
-   min-height: 20px;
-   padding-left: 12px;
-   padding-right: 12px;
-   margin: 8px auto 8px auto;
-   opacity: 0.7;
+       display: flex;
+    flex-direction: row;
+    height: 24px;
+    width: 100%;
+    min-width: 24px;
+    min-height: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin: 8px auto 8px auto;
+    opacity: 0.8;
 }
 
 .alert-banner{
@@ -145,15 +168,45 @@ font-weight: 100;
    	margin:55px 18px;
 
 }
-
+.alert-banner p{
+  font-size: 1.2em;
+text-align: left;
+}
 .alert-banner-close{
-	 font-size: 2em;
-	 margin: auto;
+	 font-size: 1.3em;
+	margin-top:15px;
 	 padding-bottom: 5px;
-	 cursor: default;
+
 }
 
+#notifications ul{
+      margin-top: 22px;
+      margin-left: -90px;
+      z-index: 2;
+      height: 5em;
+      width:20%;
+      position:absolute;
+      border: 1px solid #dbdbdb;
+          box-shadow: 3px 15px 15px #666;
+          background-color: navy;
+              border-radius:5px;
+    box-shadow: 3px 15px 15px #666;
+   }
 
+   #notifications ul li a{
+   
+          color:white;
+      padding-top: 16px;
+      padding-bottom: 8px;
+      margin:auto;
+      margin-top: 5px;
+
+   }
+
+   #notifications ul li { font-size: 1em;
+    width: 255px;
+    padding-top: 4px;
+    padding-bottom: 4px;}
 /*MAIN*/
 
 
@@ -170,7 +223,7 @@ font-weight: 100;
 	display:flex;
 	flex-direction: row-reverse;	
 	width: 70%;
-	background-color: red;
+	background-color: lightgrey;
 	border-bottom: 1px solid #b2b1b2;
 	margin: 15px;
 	height: 3em;
@@ -179,12 +232,12 @@ font-weight: 100;
 }
 #searchbox{
  width: 50vw;
- height: 5vh;
+ height: 4vh;
  outline: none;
    padding-left: 12px;
    border: 1px solid #dbdbdb;
    border-radius: 5px;
-   margin-top: 8px;
+   margin-top: 4px;
    z-index: 1;
 
 
@@ -196,8 +249,23 @@ font-weight: 100;
 
 
 /*CHART*/
+.widget-container-full{
+  width:90%;
+}
 .traffic-nav{display: flex;}
+.daily,.mobile{
 
+    border: 1px solid #d8d8d7;
+    padding:15px;}
+
+.traffic-nav{
+      display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-right: 4px;
+    list-style-type: none;
+}
 .traffic-nav li {
    font-size: 0.75em;
    font-weight: bold;
@@ -211,12 +279,14 @@ font-weight: 100;
    margin-right: 10px;
    margin-bottom: 25px;
 }
-
+#daily-chart,#mobile-chart {
+  margin-left:-15px ;
+}
 
 /*SOCIAL*/
 
-.social-container {
-		width:90%;
+.social-container{
+	 
    display: grid;
    grid-auto-columns: 1fr 1fr 1fr;
    grid-template-areas:
@@ -228,6 +298,7 @@ font-weight: 100;
    padding-bottom: 1.2em;
    padding-left: 10px;
    border: 1px solid #d8d8d7;
+  
 }
 
 .stats { grid-area: stats;
@@ -297,7 +368,9 @@ margin-right: 0.2em;}
 /*MEMBERS*/
 .members, .recent-activity-container{
 	display: grid;
-  width:50%;
+
+    border: 1px solid #d8d8d7;
+    padding:15px;
 }
 
  .member-card {
@@ -325,8 +398,13 @@ margin-right: 0.2em;}
    text-transform: capitalize;
    padding: 10px 0 0 30px;
 }
-.member-email{grid-area: email;}
-.member-date{grid-area: date;}
+.member-email{grid-area: email;
+  font-size: 0.6em;
+    padding: 0 0 10px 30px;
+  }
+.member-date{grid-area: date;   
+     font-size: 0.8em;
+    margin: auto -7px auto -20px;}
 
 
 
@@ -346,7 +424,8 @@ margin-right: 0.2em;}
    padding: 10px 0 0 30px;
 }
 .hours-ago{grid-area: time;
- margin-left: 25px;}
+ margin-left: 25px;
+font-size: 0.5em;}
 
 
 
@@ -370,35 +449,44 @@ margin-right: 0.2em;}
 .widget-container{
 	display: flex;
 	flex-direction: column;
-	width:75%;
+	
 }
 
 
 
 
-
+.message,.settings{
+  
+    border: 1px solid #d8d8d7;
+    padding:15px;
+}
 
 #userField{
 	height: 2vh;
 		width:50vw;
 	}
+  #messageField{
+    border: 1px solid #b2b1b2;
+  }
 #userField,#messageField,#send{
-
+  
 	padding:10px;
 	margin:10px;
+
 }
-#send{height: 6vh;}
+#send{height: 6vh;background-color: #6e4caf; color:white;}
 
 .settings{display: flex;
 flex-direction: column;
-width:75%;
+
 padding-left: 5px;}
 
 #save,#cancel{
+   color:white;background-color: #6e4caf;
 	padding: 3px;
 	height:5vh;
 	width: 45%;
-	margin-top: 15px;
+	margin-top: 20px;
 	margin-bottom: 	15px;
 	 }
 
@@ -482,13 +570,16 @@ input:checked + .slider:before {
 
 
 
-/*   =========   MEDIA QUERY==================
+/*   =========   MEDIA QUERY
+
+TABLET
+==================
 ===================================*/
 
 
 
 @media (min-width: 768px) {
-
+          .headline{display: block}
 
     			.widget-container-full {
     			width: 90vw;
@@ -501,14 +592,20 @@ input:checked + .slider:before {
 		          .navigation {
             display: block;
          }
+             #searchbox{
+                 margin-right: 15px;
+                  width: 40vw;
+                      margin-right: 50px;
+         }
+     
       				#dashboard,
       				#members,
       				#visits,
       				#settings {
       				   display: flex;
       				   flex-direction: column;
-      				   height: calc(30% / 4 - 110px);
-      				   width: 70%;
+      				   height: calc(50% / 4 - 110px);
+      				  
       				   min-width: 20px;
       				   min-height: 20px;
       				   padding-left: 4px;
@@ -524,15 +621,18 @@ input:checked + .slider:before {
 
     				   #alert{
     						   	display: block;
-    				      font-size: 0.7em;
+    				      width: 95%;
     				      line-height: 28px;
     				      padding-top: 0;
     				      margin-top: 0;
     				   }
     				   .alert-banner{
-    				   	width: 89%;
+    				   	
     				   	margin:5px;
                }
+                .alert-banner-close{
+                  margin-top:0;
+                }
 
       				  .traffic-header{
                   display:flex;
@@ -545,21 +645,42 @@ input:checked + .slider:before {
                       justify-content: flex-end;
                   flex-wrap: nowrap;
                   align-items: center;
+                  margin-right:30px;
                 }
            .container-for-members{
                      display:  flex;
-                      
-                  flex-wrap: nowrap;
+                   flex-wrap: nowrap;
                   align-items: center;
+                      
+           }
+           .members,.recent-activity-container{
+            width: 50%;
            }
                   
                  .input-part{
                     display:  flex;
-                      justify-content: flex-end;
-                  flex-wrap: nowrap;
-                  align-items: center;
+                   flex-wrap: nowrap;
+                                  }
 
-                 }
+              .message, .settings{width:50%;
+              }
+              #userField,#messageField{width:95%
+              }
+
+              #timezone{width: 85%
+              }
+              .members,.recent-activity-container{
+                border:0;
+              }
+              .members{border-right:  1px solid #dbdbdb;}
+
+              .social-media{
+                font-size:1em;
+                padding-bottom: 5px;
+              }
+              .followers{
+                font-size:2em;
+              }
 }
 
 
@@ -567,3 +688,69 @@ input:checked + .slider:before {
 
 
 
+/*   =========   MEDIA QUERY
+
+DESKTOP
+==================
+===================================*/
+
+
+@media (min-width: 1200px) {
+        html{
+          width: 100%;
+        }
+        #searchbox{
+          margin-top:0;
+          width: 40vw;
+          height:35px;
+          margin-right: 18px;
+                 }
+                 .traffic-header{
+                  margin-top: 10px;
+                  margin-left: 5px;
+                 }
+                
+                 .daily,.mobile{
+                  border:0;
+                 }
+                 .daily{
+                  border-right:1px solid #d8d8d7;
+                 }
+                 .activity-header{
+                  padding-bottom:10px;
+                 }
+                 .settings{
+                  padding-left: 10px;
+                 }
+                 #timezone{
+                  margin-left: 14px;
+                 }
+
+                 .member-card {
+                    display: grid;
+                    grid-template-columns: 18px 1fr;}
+
+                    .member-date{
+                      margin-right: 20px;
+                    }
+
+                    .members-container .horizontal{
+                      width: 95%;
+                    }
+                    .follow-link{
+                      margin-left:40px;
+                      font-size: 1.3em;
+                    }
+                    .msg-dot{
+                      width: 20px;
+                      height:20px;
+                      font-size:1em;
+                    }
+
+                    #GooglePlusIcon,#FacebookIcon,#TwitterIcon{
+                          width: 72px;
+                        height: 72px;
+                        padding: 15px;
+                        margin: 15px;
+                    }
+}

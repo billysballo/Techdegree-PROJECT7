@@ -143,3 +143,20 @@ window.alert("Please fill out message field before sending");
 closeSend.addEventListener('click', function(){
       document.getElementById("confirm-box").style.display = "none";
    })
+
+//BELL NOTIFICATIONS
+
+var jingleBells =document.getElementById("AlertBell")
+
+jingleBells.addEventListener('click', function(){
+ 
+      // =-=-=-=-=-= HIDE MSG DOT - SHOW NOTIFICATION POPUP =-=-=-=
+      document.getElementById("msg-dot").style.display = "none";
+      document.getElementById("notifications").style.display = "block";
+   })
+
+var menuclick= document.getElementsByClassName("menu")
+
+for (let i=0;i<menuclick.length;i++){
+	menuclick[i].addEventListener('click',  function(){ document.getElementById("notifications").style.display = "none";})
+}
