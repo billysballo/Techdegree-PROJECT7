@@ -20,12 +20,13 @@ datasets: [{
 		data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500,2500],
 		backgroundColor: 'rgba(116, 119, 191, .3)',
 		borderWidth: 1,
+
 		}]
 };
 
 
-let trafficOptions = {
-						aspectRatio: 2.5,
+let trafficOptions = {  maintainAspectRatio: false,
+						aspectRatio: 2.8,
 						animation: {
 						duration: 0
 						},
@@ -38,7 +39,15 @@ let trafficOptions = {
 							},
 						legend : {
 						display: false
-						}
+						},
+						 layout: {
+            padding: {
+               top: 10,
+               right: 10,
+               bottom: 10,
+               left: 10
+            }
+         }
 					};
 
 

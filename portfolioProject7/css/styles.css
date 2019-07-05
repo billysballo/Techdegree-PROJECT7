@@ -16,8 +16,7 @@ body{background-color: 	white}
    width: 300px;
    overflow: hidden;
    text-align: center;
-   line-height: 24px;
-   background-color: lightgreen;
+   line-height: 24px   background-color: lightgreen;
    box-shadow: 0 0 15px #666;
    padding: 10px;
    border-radius: 5px;
@@ -25,6 +24,8 @@ body{background-color: 	white}
 }
 
 li{list-style-type: 	none;}
+
+
 
 .header {
    grid-area: header;
@@ -53,6 +54,10 @@ li{list-style-type: 	none;}
 
 .widget-container-full, .widget-container-half {
 		width: 95vw;
+}
+canvas#traffic-chart{
+  width:calc(100% + 31px) !important;
+  height: 40vh !important;
 }
 
 /* =-=-=-=-=-=-=-=-=-= STYLES -=-=-=-=-=-=-=-=-=-=-=-= */
@@ -165,7 +170,7 @@ font-weight: 100;
     color: #ffffff;
    background-color: #7377bf;
    border-radius: 5px;
-   	margin:55px 18px;
+   	margin:35px 18px;
 
 }
 .alert-banner p{
@@ -184,18 +189,19 @@ text-align: left;
       margin-left: -90px;
       z-index: 2;
       height: 5em;
-      width:20%;
+      width:28%;
       position:absolute;
       border: 1px solid #dbdbdb;
           box-shadow: 3px 15px 15px #666;
-          background-color: navy;
+          background-color: #e2e4f5;
+              right: 10%;
               border-radius:5px;
     box-shadow: 3px 15px 15px #666;
    }
 
    #notifications ul li a{
    
-          color:white;
+          color:grey;
       padding-top: 16px;
       padding-bottom: 8px;
       margin:auto;
@@ -206,7 +212,8 @@ text-align: left;
    #notifications ul li { font-size: 1em;
     width: 255px;
     padding-top: 4px;
-    padding-bottom: 4px;}
+    padding-bottom: 4px;
+    margin:5px;}
 /*MAIN*/
 
 
@@ -257,6 +264,9 @@ text-align: left;
 
     border: 1px solid #d8d8d7;
     padding:15px;}
+    .daily h3,.mobile h3{
+      margin-bottom: 15px;
+    }
 
 .traffic-nav{
       display: flex;
@@ -278,6 +288,10 @@ text-align: left;
    border-radius: 25px;
    margin-right: 10px;
    margin-bottom: 25px;
+}
+
+#traffic-chart{
+  width:900px;
 }
 #daily-chart,#mobile-chart {
   margin-left:-15px ;
@@ -323,6 +337,7 @@ margin-right: 0.2em;}
 .social-left,
 .social-center,
 .social-right {
+
    display: grid;
    grid-template-columns: 1fr 2fr;
    grid-template-rows: auto;
@@ -334,14 +349,14 @@ margin-right: 0.2em;}
 }
 
 #FacebookIcon,#GooglePlusIcon,#TwitterIcon {
-   grid-area: icon;
-   width: 30px;
-   height: 30px;
-   fill: white;
-   background-color: #7377bf;
-   border-radius: 50%;
-   padding: 3px;
-   margin: 4px;
+      grid-area: icon;
+    width: 36px;
+    height: 36px;
+    fill: #fefefe;
+    background-color: #7377bf;
+    border-radius: 50%;
+    padding: 4px;
+    margin: 4px;
 }
 
 
@@ -380,7 +395,7 @@ margin-right: 0.2em;}
       "img name date"
       "img email date";
 
-   margin-bottom: 2px;
+   margin-bottom: 3%;
    position: relative;
 }
 
@@ -394,7 +409,7 @@ margin-right: 0.2em;}
 
 .member-name{
    grid-area: name;
-   font-size: 0.7em;
+   font-size: 0.8em;
    text-transform: capitalize;
    padding: 10px 0 0 30px;
 }
@@ -415,17 +430,19 @@ margin-right: 0.2em;}
       "img comment follow"
       "img time follow";
 
-   margin-bottom: 2px;
+   margin-bottom: 3%;
    position: relative;
 }
 .member-comment{
    grid-area: comment;
    font-size: 0.7em;
    padding: 10px 0 0 30px;
+       white-space: nowrap;
 }
 .hours-ago{grid-area: time;
  margin-left: 25px;
-font-size: 0.5em;}
+font-size: 0.7em;
+}
 
 
 
@@ -435,7 +452,7 @@ font-size: 0.5em;}
    font-size: 2em;
    padding-top: 0;
    padding-bottom: 0;
-  
+      margin-left: 1em;
 }
 
 .horizontal{
@@ -460,12 +477,21 @@ font-size: 0.5em;}
     border: 1px solid #d8d8d7;
     padding:15px;
 }
+ .message p{
+   padding: 9px;
+ }
+ .settings p{
+   margin-left: 15px;
+   margin-top:10px;
+ }
 
 #userField{
 	height: 2vh;
 		width:50vw;
+        background-color: #fbfbfb;
 	}
   #messageField{
+        background-color: #fbfbfb;
     border: 1px solid #b2b1b2;
   }
 #userField,#messageField,#send{
@@ -512,6 +538,9 @@ padding-left: 5px;}
   margin:auto;
       margin-left: 5px;
 }
+
+
+
 
 /* Hide default HTML checkbox */
 .switch input {
@@ -567,7 +596,9 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
+#timezone,.settings-button{
+  margin-left: 15px;
+}
 
 
 /*   =========   MEDIA QUERY
@@ -629,6 +660,7 @@ TABLET
     				   .alert-banner{
     				   	
     				   	margin:5px;
+                    margin-bottom: 30px;
                }
                 .alert-banner-close{
                   margin-top:0;
@@ -663,7 +695,10 @@ TABLET
                                   }
 
               .message, .settings{width:50%;
+                    padding-bottom: 6em;
               }
+
+             
               #userField,#messageField{width:95%
               }
 
@@ -674,13 +709,50 @@ TABLET
               }
               .members{border-right:  1px solid #dbdbdb;}
 
+            .social-left,.social-center,.social-right{
+              width: 25vw;
+            }
               .social-media{
-                font-size:1em;
+                margin:auto;
+                font-size:2em;
                 padding-bottom: 5px;
               }
+
+
+              #FacebookIcon,#GooglePlusIcon,#TwitterIcon {
+                   
+                  width: 6vw;
+                  height: 5vh;
+                 
+                  margin: auto;
+              }
+
               .followers{
+                margin:auto;
                 font-size:2em;
               }
+              .member-card{
+                margin-top: 5px;
+              }
+              .activity-card{
+                margin-top: 5px;
+              }
+                .profile-image,.comment-image {
+              
+      height: 2.5em;
+      width: 2.5em;
+      margin-right: 0;
+   }
+   .members-info,.activity-info{
+    margin-left: 15px;
+   }
+   .hours-ago{
+        margin-left: 45px;
+   }
+
+   .switch-wrapper{
+    margin-top:15px;
+   }
 }
 
 
@@ -740,6 +812,7 @@ DESKTOP
                     .follow-link{
                       margin-left:40px;
                       font-size: 1.3em;
+                      margin-top:15px;
                     }
                     .msg-dot{
                       width: 20px;
@@ -753,4 +826,22 @@ DESKTOP
                         padding: 15px;
                         margin: 15px;
                     }
+
+                    .profile-image,.comment-image {
+      height: 3.5em;
+      width: 3.5em;
+      margin-right: 0;
+
+   }
+   .members-info,.activity-info{
+    margin-left: 35px;
+    font-size: 1.3em;
+   }
+   .hours-ago{
+    font-size: 0.8em;
+        margin-left: 65px;
+   }
+   .members h3{
+    margin-bottom: 15px;
+   }
 }
